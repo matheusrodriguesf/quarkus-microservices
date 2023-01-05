@@ -1,0 +1,17 @@
+version: '3'
+services:
+  customer-db:
+    image: postgres
+    container_name: customer-db
+    environment:
+      - POSTGRES_PASSWORD=customer
+      - POSTGRES_USER=customer
+      - POSTGRES_DB=customer
+    ports:
+      - 5432:5432
+    networks:
+      - customer-network          
+      
+networks:
+  customer-network:
+    driver: bridge
