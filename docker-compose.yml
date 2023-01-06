@@ -10,8 +10,20 @@ services:
     ports:
       - 5432:5432
     networks:
-      - customer-network          
-      
+      - customer-network
+  
+  product-database:
+    image: mariadb
+    container_name: product-database
+    environment:
+      - MYSQL_ROOT_PASSWORD=product
+      - MYSQL_USER=product
+      - MYSQL_PASSWORD=product
+      - MYSQL_DATABASE=product
+    ports:
+      - 3306:3306
+    networks:
+      - customer-network        
 networks:
   customer-network:
     driver: bridge
