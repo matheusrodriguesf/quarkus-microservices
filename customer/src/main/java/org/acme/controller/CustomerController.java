@@ -29,6 +29,8 @@ public class CustomerController {
     }
 
     @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public CustomerResponse findById(Long id) {
         return customerService.findById(id);
     }
