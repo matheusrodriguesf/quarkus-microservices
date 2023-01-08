@@ -2,6 +2,7 @@ package org.acme.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,6 +24,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GET
+    @RolesAllowed({ "admin", "user" })
     @Produces(MediaType.APPLICATION_JSON)
     public List<CustomerResponse> findAll() {
         return customerService.findAll();
