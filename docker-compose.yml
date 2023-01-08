@@ -10,7 +10,7 @@ services:
     ports:
       - 5432:5432
     networks:
-      - customer-network
+      - quarkus-network
   
   product-database:
     image: mariadb
@@ -23,7 +23,17 @@ services:
     ports:
       - 3306:3306
     networks:
-      - customer-network        
+      - quarkus-network
+  keycloak:
+    image: jboss/keycloak
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    ports:
+      - 8080:8080
+    networks:
+      - quarkus-network            
 networks:
-  customer-network:
+  quarkus-network:
     driver: bridge
